@@ -1,0 +1,20 @@
+int dt = 0; //สรา้งตวัแปรเพอื่ เก็บคา่ จากเซ็นเซอร์
+void setup()
+{
+ pinMode(2, INPUT); // ให ้ขา Digital 2 เป็น input
+ pinMode(4, OUTPUT); // ให ้ขา Digital 4 เป็น output 
+ Serial.begin(9600); // ก าหนดอตั ราสง่ ขอ้มลู ของ Serial
+}
+void loop()
+{
+ 
+ dt = digitalRead(2); //อ่านค่าเซ็นเซอร์จากขา D2 เก็บใน dt
+ Serial.print("motion = "); // แสดงค่าว่า “motion =“ ออกทาง serial monitor 
+ Serial.println(dt); // แสดงข ้อมูลในตัวแปร dt ออกทาง serial monitor 
+ if (dt == 1){ //ถ้ามีการเคลื่อนไหวผ่านเซ็นเซอร์ไฟจะติด
+ digitalWrite(4,HIGH); // คำสั่งเปิดไฟ
+}else{ //ถ ้าไม่มีการเคลื่อนไหว
+ digitalWrite(4,LOW); //คำสั่งปิดไฟ
+}
+ delay(500); // รอ 0.5 วินาที
+}
